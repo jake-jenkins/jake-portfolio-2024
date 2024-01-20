@@ -11,25 +11,23 @@ datasource db {
 }
 
 model Category {
-  id       Int       @id @default(autoincrement())
+  slug     String    @id
   name     String
-  slug     String
   Projects Project[]
 }
 
 model Technology {
-  id       Int       @id @default(autoincrement())
-  name     String
-  Projects Project[]
+  name    String    @id
+  Project Project[]
 }
 
 model Project {
-  id           Int        @id @default(autoincrement())
+  id           String       @default(uuid())
+  slug         String       @id
   name         String
-  category     Category   @relation(fields: [categoryId], references: [id])
-  categoryId   Int
+  category     Category     @relation(fields: [categorySlug], references: [slug])
+  categorySlug String
   summary      String
-  technology   Technology @relation(fields: [technologyId], references: [id])
-  technologyId Int
+  technology   Technology[]
   image        String
 }
