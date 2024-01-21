@@ -1,12 +1,13 @@
 import prisma from "../lib/primsa";
+import { Category, Project } from "./types";
 
 export async function getCategories() {
-    const categories = await prisma.Category.findMany()
+    const categories: Promise<Category[]> = await prisma.Category.findMany()
     return categories
 }
 
 export async function getCategory(slug: string) {
-    const category = await prisma.Category.findFirst({
+    const category: Promise<Category> = await prisma.Category.findFirst({
         where: {
             slug
         },
@@ -15,7 +16,7 @@ export async function getCategory(slug: string) {
 }
 
 export async function getProjectByCategory(categorySlug: string) {
-    const projects = await prisma.Project.findMany({
+    const projects: Promise<Project[]> = await prisma.Project.findMany({
         where: {
             categorySlug
         },
