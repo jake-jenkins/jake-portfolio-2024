@@ -7,16 +7,16 @@ export default function ProjectCard({
   category,
 }: {
   project: any;
-  category: string;
+  category: any;
 }) {
   return (
     <Link
-      href={`${category}/${project.slug}`}
+      href={`${category.slug}/${project.slug}`}
       className="bg-slate-800 bg-opacity-25 rounded-t-2xl rounded-b-3xl border border-white border-opacity-50"
     >
       <Image
         className="rounded-t-2xl"
-        src={`https://image.jake1.net/api/files/${project.collectionId}/${project.id}/${project.image}`}
+        src=""
         width={600}
         height={400}
         alt={`${project.name} image`}

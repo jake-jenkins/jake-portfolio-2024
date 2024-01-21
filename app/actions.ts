@@ -5,6 +5,15 @@ export async function getCategories() {
     return categories
 }
 
+export async function getCategory(slug: string) {
+    const category = await prisma.Category.findFirst({
+        where: {
+            slug
+        },
+    })
+    return category
+}
+
 export async function getProjectByCategory(categorySlug: string) {
     const projects = await prisma.Project.findMany({
         where: {
