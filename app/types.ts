@@ -1,21 +1,18 @@
 export type Category = {
     slug: string
     name: string
-    projects: Project[]
 }
 
 export type Project = {
-    id: string,
     slug: string,
+    date_created: Date,
+    date_updated: Date,
     name: string,
-    category: Category,
-    categorySlug: string,
-    summary: string,
-    technology: Technology[],
+    category: string,
     image: string
+    summary: string,
 }
 
-export type Technology = {
-    name: string,
-    project: Project[]
-}
+export type Categories = Category[]
+
+export type Projects = Project[]

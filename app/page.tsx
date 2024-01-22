@@ -4,12 +4,18 @@ import Hero from "@/components/Hero";
 import { H1, H2, P } from "@/components/Typography";
 import type { Metadata } from "next";
 import Image from "next/image";
-import { getCategories, getProjectByCategory } from "./actions";
+import { Categories } from "./types";
+
+async function getCategories() {
+  const data = await fetch(`${process.env.BACKEND}/items/category`, {
+    next: { revalidate: 300 },
+  });
+  const categories = await data.json();
+  return await categories.data;
+}
 
 export default async function Home() {
-  const categories = await getCategories();
-  // const project = await getProjectByCategory("integrations");
-  // console.log(project);
+  const categories: Categories = await getCategories();
   return (
     <>
       <Hero>
