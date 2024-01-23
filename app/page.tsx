@@ -5,14 +5,11 @@ import { H1, H2, P } from "@/components/Typography";
 import type { Metadata } from "next";
 import Image from "next/image";
 import { Categories } from "./types";
+import { getCategories } from "./actions";
 
-async function getCategories() {
-  const data = await fetch(`${process.env.BACKEND}/items/category`, {
-    next: { revalidate: 300 },
-  });
-  const categories = await data.json();
-  return await categories.data;
-}
+export const metadata: Metadata = {
+  title: "User Experience and Web Developer - Jake Jenkins",
+};
 
 export default async function Home() {
   const categories: Categories = await getCategories();

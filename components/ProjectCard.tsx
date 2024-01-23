@@ -16,7 +16,7 @@ export default function ProjectCard({
     >
       <Image
         className="rounded-t-2xl"
-        src={`https://portfolio-be.web1.jake1.net/assets/${project.image}`}
+        src={`${process.env.IMAGE_URL}/${project.image}`}
         width={600}
         height={400}
         alt={`${project.name} image`}
