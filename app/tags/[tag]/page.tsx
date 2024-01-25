@@ -15,6 +15,16 @@ import { getProjectsByTechnology } from "../../actions";
 //   };
 // }
 
+export async function generateMetadata({
+  params,
+}: {
+  params: { tag: string };
+}) {
+  return {
+    title: `Projects built with ${params.tag} by Jake Jenkins - Jake1.net`,
+  };
+}
+
 export default async function TagPage({ params }: { params: { tag: string } }) {
   const projects: Projects = await getProjectsByTechnology(params.tag);
 
