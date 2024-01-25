@@ -5,7 +5,7 @@ import { H1, H2, P } from "@/components/Typography";
 import type { Metadata } from "next";
 import Image from "next/image";
 import { Categories } from "./types";
-import { getCategories, getProjectByTechnology } from "./actions";
+import { getCategories } from "./actions";
 
 export const metadata: Metadata = {
   title: "User Experience and Web Developer - Jake Jenkins",
