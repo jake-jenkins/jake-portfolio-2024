@@ -2,16 +2,10 @@ import Link from "next/link";
 import Image from "next/image";
 import { H2, P } from "./Typography";
 
-export default function ProjectCard({
-  project,
-  category,
-}: {
-  project: any;
-  category: any;
-}) {
+export default function ProjectCard({ project }: { project: any }) {
   return (
     <Link
-      href={`${category.slug}/${project.slug}`}
+      href={`/${project.category}/${project.slug}`}
       className="bg-slate-800 bg-opacity-25 rounded-t-2xl rounded-b-3xl border border-white border-opacity-50"
     >
       <Image

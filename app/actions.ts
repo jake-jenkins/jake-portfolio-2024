@@ -51,3 +51,14 @@ export async function getProject(projectSlug: string): Promise<Project> {
     const project = await data.json();
     return project.data;
 }
+
+export async function getProjectsByTechnology(technology: string) {
+    const data = await fetch(
+        `${process.env.BACKEND}/items/project?filter[technology][_contains]=${technology}`,
+        {
+            next: { revalidate: 300 },
+        }
+    );
+    const project = await data.json();
+    return project.data;
+}

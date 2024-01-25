@@ -41,7 +41,6 @@ export default async function CategoryPage({
           <ProjectCard
             key={project.slug}
             project={project}
-            category={category}
           />
         ))}
       </div>
