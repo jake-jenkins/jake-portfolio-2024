@@ -11,6 +11,7 @@ export async function generateStaticParams() {
   const projects: Projects = await getProjects();
   return projects.map((project: Project) => ({
     project: project.slug,
+    category: project.category
   }));
 }
 
@@ -30,7 +31,7 @@ export async function generateMetadata({
 export default async function ProjectPage({
   params,
 }: {
-  params: { project: string };
+  params: { category: string, project: string };
 }) {
   const project: Project = await getProject(params.project);
   const category: Category = await getCategory(project.category);
