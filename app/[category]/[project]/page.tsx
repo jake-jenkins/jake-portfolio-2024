@@ -66,7 +66,11 @@ export default async function ProjectPage({
       <H2>Technology</H2>
       <ul className="list-disc">
         {project.technology.map((technology: string) => (
-          <Link href={`/tags/${technology}`} key={technology} className="mr-2 my-4 py-2 px-4 bg-white inline-block text-black">
+          <Link
+            href={`/projects-built-with/${technology}`}
+            key={technology}
+            className="mr-2 my-4 py-2 px-4 bg-white inline-block text-black"
+          >
             {technology}
           </Link>
         ))}
