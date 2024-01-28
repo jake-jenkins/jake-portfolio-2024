@@ -1,7 +1,7 @@
 import { Categories, Category, Project, Projects } from "./types";
 
 export async function getCategories(): Promise<Categories> {
-    const data = await fetch(`${process.env.BACKEND}/items/category`, {
+    const data = await fetch(`${process.env.BACKEND}/category`, {
         next: { revalidate: 300 },
     });
     const categories = await data.json();
@@ -10,7 +10,7 @@ export async function getCategories(): Promise<Categories> {
 
 export async function getCategory(categorySlug: string): Promise<Category> {
     const data = await fetch(
-        `${process.env.BACKEND}/items/category/${categorySlug}`,
+        `${process.env.BACKEND}/category/${categorySlug}`,
         {
             next: { revalidate: 300 },
         }
@@ -21,7 +21,7 @@ export async function getCategory(categorySlug: string): Promise<Category> {
 
 export async function getProjects(): Promise<Projects> {
     const data = await fetch(
-        `${process.env.BACKEND}/items/project`,
+        `${process.env.BACKEND}/project`,
         {
             next: { revalidate: 300 },
         }
@@ -32,7 +32,7 @@ export async function getProjects(): Promise<Projects> {
 
 export async function getProjectsByCategory(projectSlug: string): Promise<Projects> {
     const data = await fetch(
-        `${process.env.BACKEND}/items/project?filter[category][_eq]=${projectSlug}`,
+        `${process.env.BACKEND}/project?filter[category][_eq]=${projectSlug}`,
         {
             next: { revalidate: 300 },
         }
@@ -43,7 +43,7 @@ export async function getProjectsByCategory(projectSlug: string): Promise<Projec
 
 export async function getProject(projectSlug: string): Promise<Project> {
     const data = await fetch(
-        `${process.env.BACKEND}/items/project/${projectSlug}`,
+        `${process.env.BACKEND}/project/${projectSlug}`,
         {
             next: { revalidate: 300 },
         }
@@ -54,11 +54,11 @@ export async function getProject(projectSlug: string): Promise<Project> {
 
 export async function getProjectsByTechnology(technology: string) {
     const data = await fetch(
-        `${process.env.BACKEND}/items/project?filter[technology][_contains]=${technology}`,
+        `${process.env.BACKEND}/project?filter[tags][_contains]=${technology}`,
         {
-            next: { revalidate: 300 },
+            next: { revalidate: 10 },
         }
     );
-    const project = await data.json();
-    return project.data;
+    const projects = await data.json();
+    return projects.data;
 }

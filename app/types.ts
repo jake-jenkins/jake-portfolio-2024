@@ -11,7 +11,7 @@ export type Project = {
     category: string,
     image: string
     summary: string,
-    technology: string[]
+    tags: string[]
 }
 
 export type Categories = Category[]

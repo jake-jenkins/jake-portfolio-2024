@@ -4,7 +4,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "img.web1.jake1.net",
+        hostname: "api.jake1.net",
       },
     ],
   },
