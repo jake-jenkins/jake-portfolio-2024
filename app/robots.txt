@@ -1,2 +1,4 @@
 User-Agent: *
 Allow: /
+Disallow: /login
+Sitemap: https://www.jake1.net/sitemap.xml
