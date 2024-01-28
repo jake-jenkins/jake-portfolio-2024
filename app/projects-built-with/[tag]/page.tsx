@@ -2,18 +2,14 @@ import ProjectCard from "@/components/ProjectCard";
 import { H1, P } from "@/components/Typography";
 import Link from "next/link";
 import { Project, Projects } from "../../types";
-import { getProjectsByTechnology } from "../../actions";
+import { getProjectsByTechnology, getTags } from "../../actions";
 
-// export async function generateMetadata({
-//   params,
-// }: {
-//   params: { category: string };
-// }) {
-//   const cat: Category = await getCategory(params.category);
-//   return {
-//     title: `${cat.name} by Jake Jenkins - Jake1.net`,
-//   };
-// }
+export async function generateStaticParams() {
+  const tags: string[] = await getTags();
+  return tags.map((tag: string) => ({
+    tag,
+  }));
+}
 
 export async function generateMetadata({
   params,
